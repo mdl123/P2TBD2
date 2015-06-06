@@ -348,6 +348,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel23.setText("Clave primaria:");
 
         jButton7.setText("Normalizar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         textarea_nf2.setColumns(20);
         textarea_nf2.setRows(5);
@@ -370,6 +375,16 @@ public class Principal extends javax.swing.JFrame {
         textarea_nf3.setRows(5);
         jScrollPane3.setViewportView(textarea_nf3);
 
+        combobox_atributos_nor1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                combobox_atributos_nor1MouseReleased(evt);
+            }
+        });
+        combobox_atributos_nor1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combobox_atributos_nor1ItemStateChanged(evt);
+            }
+        });
         combobox_atributos_nor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combobox_atributos_nor1ActionPerformed(evt);
@@ -845,7 +860,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_button_insertarrelacion_norActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -862,14 +877,59 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_combobox_atributos_norActionPerformed
 
     private void combobox_atributos_nor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_atributos_nor1ActionPerformed
-       Object o=this.combobox_atributos_nor1.getItemAt(this.combobox_atributos_nor1.getSelectedIndex());
-       if(jtext_multi.getText()==""){
+      
+    }//GEN-LAST:event_combobox_atributos_nor1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String rel=jtext_relacion_nor.getText();
+        String[] split = rel.split(",");
+        ArrayList<String>s=new ArrayList<String>();
+         for(int i=0;i<split.length;i++){
+           s.add(split[i]);
+            
+        }//fin del for
+        String multi=jtext_multi.getText();
+       String[] split2=multi.split(",");
+       ArrayList<String>s2=new ArrayList<String>();
+       for(int i=0;i<s.size();i++){
+           for(int i2=0;i2<split2.length;i2++){
+               if(s.get(i) == null ? split2[i2] == null : s.get(i).equals(split2[i2])){
+                   s.remove(i);
+               }//fin del if
+           }//fin del for
+       }//fin del for
+       for(int i=0;i<s.size();i++){
+           if(i==0){
+           textarea_nf1.setText("R("+s.get(i));
+           }//fin del if
+           else{
+               textarea_nf1.setText(textarea_nf1.getText()+","+s.get(i));
+           }//fin del else
+           
+       }//fin del for
+       textarea_nf1.setText(textarea_nf1.getText()+")");
+       textarea_nf1.setText(textarea_nf1.getText()+"\n"+"R("+s.get(0));
+       for(int i=0;i<split2.length;i++){
+       textarea_nf1.setText(textarea_nf1.getText()+","+split2[i]);    
+       }//fin del for
+       textarea_nf1.setText(textarea_nf1.getText()+")");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void combobox_atributos_nor1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combobox_atributos_nor1ItemStateChanged
+       
+    }//GEN-LAST:event_combobox_atributos_nor1ItemStateChanged
+
+    private void combobox_atributos_nor1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combobox_atributos_nor1MouseReleased
+         Object o=this.combobox_atributos_nor1.getItemAt(this.combobox_atributos_nor1.getSelectedIndex());
+       if("".equals(jtext_multi.getText())){
            jtext_multi.setText(o.toString());
        }//fin del if
        else{
+           if(jtext_multi.getText().contains(o.toString())==false){
        jtext_multi.setText(jtext_multi.getText()+","+o.toString());
+           }//fin del if
        }//fin del else
-    }//GEN-LAST:event_combobox_atributos_nor1ActionPerformed
+    }//GEN-LAST:event_combobox_atributos_nor1MouseReleased
 
     /**
      * @param args the command line arguments
