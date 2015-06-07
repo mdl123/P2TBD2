@@ -16,8 +16,14 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    ArrayList<dependencias>dep;
+        
+        
     public Principal() {
         initComponents();
+        dep=new ArrayList<dependencias>();
+        
+        
     }
 
     /**
@@ -85,10 +91,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         textarea_nf3 = new javax.swing.JTextArea();
-        combobox_atributos_nor1 = new javax.swing.JComboBox();
-        jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jtext_multi = new javax.swing.JTextField();
+        cleaner = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         button_clavescandidatas = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -375,27 +380,15 @@ public class Principal extends javax.swing.JFrame {
         textarea_nf3.setRows(5);
         jScrollPane3.setViewportView(textarea_nf3);
 
-        combobox_atributos_nor1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                combobox_atributos_nor1MouseReleased(evt);
-            }
-        });
-        combobox_atributos_nor1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                combobox_atributos_nor1ItemStateChanged(evt);
-            }
-        });
-        combobox_atributos_nor1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combobox_atributos_nor1ActionPerformed(evt);
-            }
-        });
-
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel27.setText("Lista de atributos:");
-
         jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel28.setText("Atributos Multievaluados");
+
+        cleaner.setText("Limpiar Datos");
+        cleaner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dialog_normalizarLayout = new javax.swing.GroupLayout(dialog_normalizar.getContentPane());
         dialog_normalizar.getContentPane().setLayout(dialog_normalizarLayout);
@@ -436,12 +429,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jtext_claveprimaria, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                        .addGap(120, 120, 120)
-                                        .addComponent(combobox_atributos_nor1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
+                                .addGap(290, 290, 290)
                                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtext_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -471,7 +459,9 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(dialog_normalizarLayout.createSequentialGroup()
                                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                            .addComponent(cleaner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(26, 26, 26)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(dialog_normalizarLayout.createSequentialGroup()
@@ -520,12 +510,9 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jtext_claveprimaria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(combobox_atributos_nor1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtext_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtext_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,7 +541,10 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cleaner, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -852,15 +842,67 @@ public class Principal extends javax.swing.JFrame {
             for(int i=0; i<atributos.length;i++){
                 this.combobox_atributos_nor.addItem(atributos[i]);
             }
-             for(int i=0; i<atributos.length;i++){
-                this.combobox_atributos_nor1.addItem(atributos[i]);
-            }
         }
         
     }//GEN-LAST:event_button_insertarrelacion_norActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+              if((!(this.combobox_atributos_nor.getItemCount()==0)) ){
+            this.label_errores_nor.setText("...");
+            String determina = this.jtext_determina_nor.getText().toUpperCase();
+            String depende = this.jtext_depende_nor.getText().toUpperCase();
+            boolean correcto = true;
+            for(int i=0; i<determina.length();i++){
+                if(!(Character.isLetter(determina.charAt(i)))){
+                    this.label_errores_nor.setText("Ingrese atributos válidos");
+                    correcto = false;
+                    break;
+                }
+            }
+            for(int i=0; i<depende.length();i++){
+                if(!(Character.isLetter(depende.charAt(i)))){
+                    this.label_errores_nor.setText("Ingrese atributos válidos");
+                    correcto = false;
+                    break;
+                }
+            }
+            int contar=0;
+            for(int i=0; i<determina.length();i++){
+                contar=0;
+              for(int j=0; j<this.combobox_atributos_nor.getItemCount();j++){  
+                  if(determina.charAt(i)==(this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))){
+                      contar++;
+                      j=this.combobox_atributos_nor.getItemCount();
+
+                  }
+               }
+              if(contar==0){
+                  correcto=false;
+                  this.label_errores_nor.setText("Ingrese atributos válidos");
+                  break;
+              }
+            }
+            for(int i=0; i<depende.length();i++){
+                contar=0;
+              for(int j=0; j<this.combobox_atributos_nor.getItemCount();j++){  
+                  if(depende.charAt(i)==(this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))){
+                      contar++;
+                      j=this.combobox_atributos_nor.getItemCount();
+                  }
+              }
+              if(contar==0){
+                  correcto=false;
+                  this.label_errores_nor.setText("Ingrese atributos válidos");
+                  break;
+              }
+            }
+            if(correcto){
+                this.combobox_dependencias_nor.addItem(determina+"->"+depende);
+                
+                dep.add(new dependencias(determina,depende));
+            }//fin del if
        
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -876,11 +918,9 @@ public class Principal extends javax.swing.JFrame {
        jtext_claveprimaria.setText(o.toString());
     }//GEN-LAST:event_combobox_atributos_norActionPerformed
 
-    private void combobox_atributos_nor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_atributos_nor1ActionPerformed
-      
-    }//GEN-LAST:event_combobox_atributos_nor1ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try{
+        if(!"".equals(jtext_multi.getText())){
         String rel=jtext_relacion_nor.getText();
         String[] split = rel.split(",");
         ArrayList<String>s=new ArrayList<String>();
@@ -913,23 +953,128 @@ public class Principal extends javax.swing.JFrame {
        textarea_nf1.setText(textarea_nf1.getText()+","+split2[i]);    
        }//fin del for
        textarea_nf1.setText(textarea_nf1.getText()+")");
+        }//fin del if
+        else{
+            textarea_nf1.setText("R("+jtext_relacion_nor.getText()+")");
+        }//fin del else
+        ArrayList<String>relation=new ArrayList();
+        if(!"".equals(jtext_multi.getText())){
+           String[] split= textarea_nf1.getText().split("\n");
+           for(int i=0;i<split.length;i++){
+               relation.add(split[i]);
+           }//fin del for
+        }//fin del if
+        else{
+            relation.add(textarea_nf1.getText());
+        }//fin del else
+        String clave=jtext_claveprimaria.getText();
+        ArrayList<String>claves=new ArrayList<String>();
+        claves.add(clave);
+        ArrayList<String>NewRel=new ArrayList<String>();
+        for(int i=0;i<dep.size();i++){
+            System.out.println(dep.get(i).getDeterminante());
+            System.out.println(dep.get(i).getDependiente());
+        }//fin del for
+            System.out.println("");
+            System.out.println("");
+        boolean contiene=false;
+        
+            for(int i=0;i<dep.size();i++){
+               
+                    if(dep.get(i).getDeterminante().equals(clave)){
+                        contiene=true;
+                    }//fin del if
+              
+                if(contiene==false){
+                   
+                   
+            if(claves.contains(dep.get(i).getDeterminante())){
+                int index=claves.indexOf(dep.get(i).getDeterminante());
+                        String concat = NewRel.get(index).concat(","+dep.get(i).getDeterminante());
+                        NewRel.set(index, concat);
+               
+            }//fin del if
+            else{
+                NewRel.add(dep.get(i).getDeterminante()+","+dep.get(i).getDependiente());
+            }//fin del else
+           for(int i2=0;i2<NewRel.size();i2++){
+                        String[] split2 = NewRel.get(i2).split(",");
+                        claves.add(split2[0]);
+                        
+                    }//fin del for
+                }//fin del if grande
+                contiene=false;
+            }//fin del for de dep
+             for(int i=0;i<claves.size();i++){
+                System.out.println(claves.get(i));   
+            }
+             ArrayList<String>smo=new ArrayList<String>();
+            for(int i=0;i<NewRel.size();i++){
+            String[] split = NewRel.get(i).split(",");
+                for(int i2=0;i2<split.length;i2++){
+                    smo.add(split[i2]);
+                }//fin del segundo for
+            }//fin del for
+        
+       
+         
+        for(int i=0;i<relation.size();i++){
+            for(int i2=0;i2<smo.size();i2++){
+                String x=relation.get(i).replace(","+smo.get(i2),"");
+                relation.set(i, x);
+            }//fin del segundo for
+        }//fin del for        
+        
+         for(int i=0;i<NewRel.size();i++){
+            relation.add("R("+NewRel.get(i)+")");
+        }//fin del for
+        
+        
+        for(int i=0;i<relation.size();i++){
+        textarea_nf2.setText(textarea_nf2.getText()+relation.get(i)+"\n");
+        }//fin del for
+        }
+        catch(Exception e){
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Exception starting");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void combobox_atributos_nor1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combobox_atributos_nor1ItemStateChanged
-       
-    }//GEN-LAST:event_combobox_atributos_nor1ItemStateChanged
-
-    private void combobox_atributos_nor1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combobox_atributos_nor1MouseReleased
-         Object o=this.combobox_atributos_nor1.getItemAt(this.combobox_atributos_nor1.getSelectedIndex());
-       if("".equals(jtext_multi.getText())){
-           jtext_multi.setText(o.toString());
-       }//fin del if
-       else{
-           if(jtext_multi.getText().contains(o.toString())==false){
-       jtext_multi.setText(jtext_multi.getText()+","+o.toString());
-           }//fin del if
-       }//fin del else
-    }//GEN-LAST:event_combobox_atributos_nor1MouseReleased
+    public ArrayList<String> TransitivosParaPrimaria(ArrayList<dependencias>list){
+        ArrayList<String> ret;
+        ret=new ArrayList<String>();
+        ArrayList<String>list1;
+        list1=new ArrayList<String>();
+        ArrayList<String>list2;
+        list2=new ArrayList<String>();
+        for(int i=0;i<list.size();i++){
+            list1.add(list.get(i).getDeterminante());
+            list2.add(list.get(i).getDependiente());
+        }//fin del for
+        for(int i=1;i<list1.size();i++){
+            for(int i2=0;i2<i;i2++){
+                
+            }//fin del for
+        }//fin del for
+        
+        return null;
+    }
+    
+    
+    private void cleanerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanerActionPerformed
+        this.textarea_nf1.setText("");
+        this.textarea_nf2.setText("");
+        this.textarea_nf3.setText("");
+        this.combobox_atributos_nor.removeAll();
+        this.combobox_dependencias_nor.removeAll();
+        
+        this.jtext_claveprimaria.setText(null);
+        this.jtext_depende_nor.setText(null);
+        this.jtext_determina_nor.setText(null);
+        this.jtext_relacion_nor.setText(null);
+    }//GEN-LAST:event_cleanerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -970,9 +1115,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton button_clavescandidatas;
     private javax.swing.JButton button_insertarrelacion;
     private javax.swing.JButton button_insertarrelacion_nor;
+    private javax.swing.JButton cleaner;
     private javax.swing.JComboBox combobox_atributos;
     private javax.swing.JComboBox combobox_atributos_nor;
-    private javax.swing.JComboBox combobox_atributos_nor1;
     private javax.swing.JComboBox combobox_clavescandidatas;
     private javax.swing.JComboBox combobox_dependencias;
     private javax.swing.JComboBox combobox_dependencias_nor;
@@ -1004,7 +1149,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
