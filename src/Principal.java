@@ -971,14 +971,17 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<String>claves=new ArrayList<String>();
         claves.add(clave);
         ArrayList<String>NewRel=new ArrayList<String>();
-        for(int i=0;i<dep.size();i++){
-            System.out.println(dep.get(i).getDeterminante());
+      
+        boolean contiene=false;
+        ArrayList<dependencias>tr=new ArrayList<dependencias>();
+    this.TransitivosParaPrimaria(clave, dep);
+        
+          for(int i=0;i<dep.size();i++){
+            System.out.print(dep.get(i).getDeterminante()+"->");
             System.out.println(dep.get(i).getDependiente());
         }//fin del for
             System.out.println("");
             System.out.println("");
-        boolean contiene=false;
-        
             for(int i=0;i<dep.size();i++){
                
                     if(dep.get(i).getDeterminante().equals(clave)){
@@ -1042,24 +1045,46 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    public ArrayList<String> TransitivosParaPrimaria(ArrayList<dependencias>list){
+    public void TransitivosParaPrimaria(String key,ArrayList<dependencias>list){
         ArrayList<String> ret;
         ret=new ArrayList<String>();
         ArrayList<String>list1;
         list1=new ArrayList<String>();
         ArrayList<String>list2;
         list2=new ArrayList<String>();
+        ArrayList<dependencias>ret1=new ArrayList<dependencias>();
+        String tmp=key;
+        System.out.println("Entro al metodo");
         for(int i=0;i<list.size();i++){
             list1.add(list.get(i).getDeterminante());
             list2.add(list.get(i).getDependiente());
         }//fin del for
-        for(int i=1;i<list1.size();i++){
-            for(int i2=0;i2<i;i2++){
-                
-            }//fin del for
+        int count=0;
+        int index=0;
+        ArrayList<Integer>pos=new ArrayList<Integer>();
+        for(int i=0;i<list1.size();i++){
+            if(list1.get(i) == null ? key == null : list1.get(i).equals(key)){
+            pos.add(i);
+            }
         }//fin del for
-        
-        return null;
+        for(int i=0;i<pos.size();i++){
+            tmp=list2.get(pos.get(i));
+            System.out.println(tmp);
+       while(list1.contains(tmp)){
+           System.out.println("Its at the while");
+          tmp= list2.get(list1.indexOf(tmp));
+           System.out.println(tmp);
+          
+               ret.add(tmp);
+              
+               
+       
+           count+=1;
+       }//fin del while
+        }//fin del for
+        for(int i=0;i<ret.size();i++){
+            dep.add(new dependencias(key,ret.get(i)));
+        }//fin del for
     }
     
     
