@@ -1,4 +1,5 @@
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import java.util.ArrayList;
 
 /*
@@ -6,7 +7,6 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Den
@@ -16,14 +16,15 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    ArrayList<dependencias>dep;
-        
-        
+    ArrayList<dependencia> dep;
+    ArrayList<String> deter;
+    ArrayList<String> depen;
+
     public Principal() {
         initComponents();
-        dep=new ArrayList<dependencias>();
-        
-        
+        dep = new ArrayList<dependencia>();
+        deter = new ArrayList<String>();
+        depen = new ArrayList<String>();
     }
 
     /**
@@ -94,6 +95,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jtext_multi = new javax.swing.JTextField();
         cleaner = new javax.swing.JButton();
+        label2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         button_clavescandidatas = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -208,10 +210,10 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(dialog_clavesLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(dialog_clavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(dialog_clavesLayout.createSequentialGroup()
                                 .addGap(130, 130, 130)
-                                .addComponent(label_errores, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(label_errores, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(dialog_clavesLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,9 +234,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(dialog_clavesLayout.createSequentialGroup()
-                        .addGap(160, 160, 160)
+                        .addGap(170, 170, 170)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
+                        .addGap(40, 40, 40)
                         .addComponent(combobox_clavescandidatas, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
@@ -259,8 +261,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(dialog_clavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_errores, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_errores, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(dialog_clavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,30 +276,30 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(dialog_clavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(combobox_dependencias, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(40, 40, 40)
                 .addGroup(dialog_clavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(dialog_clavesLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(combobox_clavescandidatas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        dialog_normalizar.setBounds(new java.awt.Rectangle(1, 1, 700, 600));
+        dialog_normalizar.setBounds(new java.awt.Rectangle(1, 1, 700, 700));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Normalización");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel14.setText("Introduzca la relación \" R\"");
+        jLabel14.setText("Introduzca la relación R:");
 
         jLabel15.setText(" Separando los atriburos por comas y representarlos por una única letra mayúscula. Ejemplo: A,B,C,D,Y...");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setText("R=");
 
-        button_insertarrelacion_nor.setText("Insertar");
+        button_insertarrelacion_nor.setText("Agregar");
         button_insertarrelacion_nor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_insertarrelacion_norActionPerformed(evt);
@@ -352,6 +354,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel23.setText("Clave primaria:");
 
+        jtext_claveprimaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtext_claveprimariaActionPerformed(evt);
+            }
+        });
+
         jButton7.setText("Normalizar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,103 +398,98 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        label2.setForeground(new java.awt.Color(255, 51, 51));
+        label2.setText("....E");
+
         javax.swing.GroupLayout dialog_normalizarLayout = new javax.swing.GroupLayout(dialog_normalizar.getContentPane());
         dialog_normalizar.getContentPane().setLayout(dialog_normalizarLayout);
         dialog_normalizarLayout.setHorizontalGroup(
             dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jtext_relacion_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(button_insertarrelacion_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(120, 120, 120)
+                        .addComponent(combobox_atributos_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jtext_claveprimaria, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jtext_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jtext_relacion_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(button_insertarrelacion_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                        .addGap(120, 120, 120)
-                                        .addComponent(combobox_atributos_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtext_claveprimaria, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                .addGap(290, 290, 290)
-                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtext_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                .addGap(130, 130, 130)
-                                .addComponent(label_errores_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(combobox_dependencias_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                        .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                            .addComponent(cleaner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                        .addGap(158, 158, 158)
-                                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(10, 10, 10)
-                                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(dialog_normalizarLayout.createSequentialGroup()
-                                .addComponent(jtext_determina_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jtext_depende_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(20, 20, 20))
+                        .addGap(140, 140, 140)
+                        .addComponent(label_errores_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jtext_determina_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jtext_depende_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(combobox_dependencias_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(198, 198, 198)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialog_normalizarLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cleaner, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         dialog_normalizarLayout.setVerticalGroup(
             dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,50 +505,48 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jtext_relacion_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button_insertarrelacion_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(combobox_atributos_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtext_claveprimaria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtext_claveprimaria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtext_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_errores_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtext_determina_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtext_depende_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(20, 20, 20)
+                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(combobox_dependencias_nor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(27, 27, 27)
+                .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(dialog_normalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(dialog_normalizarLayout.createSequentialGroup()
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cleaner, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGap(6, 6, 6)
+                        .addComponent(cleaner, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -620,193 +621,135 @@ public class Principal extends javax.swing.JFrame {
 
     private void button_insertarrelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_insertarrelacionActionPerformed
         // TODO add your handling code here:
+        while (this.combobox_atributos.getItemCount() > 0) {
+            this.combobox_atributos.removeItemAt(0);
+        }
+        while (this.combobox_dependencias.getItemCount() > 0) {
+            this.combobox_dependencias.removeItemAt(0);
+        }
+        while (this.combobox_clavescandidatas.getItemCount() > 0) {
+            this.combobox_clavescandidatas.removeItemAt(0);
+        }
+        this.jtext_depende.setText("");
+        this.jtext_determina.setText("");
         this.label.setText("...");
         String relacion = this.jtext_relacion.getText().toUpperCase();
         String[] atributos = relacion.split(",");
-        boolean correcto=true;
-        for(int i=0; i<atributos.length;i++){
-            if(!(atributos[i].length()==1 && Character.isLetter(atributos[i].charAt(0)))){
+        boolean correcto = true;
+        for (int i = 0; i < atributos.length; i++) {
+            if (!(atributos[i].length() == 1 && Character.isLetter(atributos[i].charAt(0)))) {
                 this.label.setText("Solamente utilize una letra para cada atributo");
-                correcto=false;
+                correcto = false;
                 break;
             }
         }
-        for(int i=0; i<atributos.length;i++){
-           for(int j=i+1; j<atributos.length;j++){
-               if(atributos[i].equals(atributos[j])){
-                   this.label.setText("No se pueden repetir letras para los atributos");
-                   correcto=false;
-                   break;
-               }
-           }
+        for (int i = 0; i < atributos.length; i++) {
+            for (int j = i + 1; j < atributos.length; j++) {
+                if (atributos[i].equals(atributos[j])) {
+                    this.label.setText("No se pueden repetir letras para los atributos");
+                    correcto = false;
+                    break;
+                }
+            }
         }
-        
-        if(correcto){
-            for(int i=0; i<atributos.length;i++){
+
+        if (correcto) {
+            for (int i = 0; i < atributos.length; i++) {
                 this.combobox_atributos.addItem(atributos[i]);
             }
         }
-        
+
     }//GEN-LAST:event_button_insertarrelacionActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if((!(this.combobox_atributos.getItemCount()==0)) ){
+        while (this.combobox_clavescandidatas.getItemCount() > 0) {
+            this.combobox_clavescandidatas.removeItemAt(0);
+        }
+        if (this.combobox_atributos.getItemCount() > 0) {
             this.label_errores.setText("...");
             String determina = this.jtext_determina.getText().toUpperCase();
             String depende = this.jtext_depende.getText().toUpperCase();
             boolean correcto = true;
-            for(int i=0; i<determina.length();i++){
-                if(!(Character.isLetter(determina.charAt(i)))){
+            for (int i = 0; i < determina.length(); i++) {
+                if (!(Character.isLetter(determina.charAt(i)))) {
                     this.label_errores.setText("Ingrese atributos válidos");
                     correcto = false;
                     break;
                 }
             }
-            for(int i=0; i<depende.length();i++){
-                if(!(Character.isLetter(depende.charAt(i)))){
+            for (int i = 0; i < depende.length(); i++) {
+                if (!(Character.isLetter(depende.charAt(i)))) {
                     this.label_errores.setText("Ingrese atributos válidos");
                     correcto = false;
                     break;
                 }
             }
-            int contar=0;
-            for(int i=0; i<determina.length();i++){
-                contar=0;
-              for(int j=0; j<this.combobox_atributos.getItemCount();j++){  
-                  if(determina.charAt(i)==(this.combobox_atributos.getItemAt(j).toString().charAt(0))){
-                      contar++;
-                      j=this.combobox_atributos.getItemCount();
+            int contar = 0;
+            for (int i = 0; i < determina.length(); i++) {
+                contar = 0;
+                for (int j = 0; j < this.combobox_atributos.getItemCount(); j++) {
+                    if (determina.charAt(i) == (this.combobox_atributos.getItemAt(j).toString().charAt(0))) {
+                        contar++;
+                        j = this.combobox_atributos.getItemCount();
 
-                  }
-               }
-              if(contar==0){
-                  correcto=false;
-                  this.label_errores.setText("Ingrese atributos válidos");
-                  break;
-              }
+                    }
+                }
+                if (contar == 0) {
+                    correcto = false;
+                    this.label_errores.setText("Ingrese atributos válidos");
+                    break;
+                }
             }
-            for(int i=0; i<depende.length();i++){
-                contar=0;
-              for(int j=0; j<this.combobox_atributos.getItemCount();j++){  
-                  if(depende.charAt(i)==(this.combobox_atributos.getItemAt(j).toString().charAt(0))){
-                      contar++;
-                      j=this.combobox_atributos.getItemCount();
-                  }
-              }
-              if(contar==0){
-                  correcto=false;
-                  this.label_errores.setText("Ingrese atributos válidos");
-                  break;
-              }
+            for (int i = 0; i < depende.length(); i++) {
+                contar = 0;
+                for (int j = 0; j < this.combobox_atributos.getItemCount(); j++) {
+                    if (depende.charAt(i) == (this.combobox_atributos.getItemAt(j).toString().charAt(0))) {
+                        contar++;
+                        j = this.combobox_atributos.getItemCount();
+                    }
+                }
+                if (contar == 0) {
+                    correcto = false;
+                    this.label_errores.setText("Ingrese atributos válidos");
+                    break;
+                }
             }
-            if(correcto){
-                this.combobox_dependencias.addItem(determina+"->"+depende);
+            if (correcto) {
+                this.combobox_dependencias.addItem(determina + "->" + depende);
             }
-       
+
         }
+        this.jtext_depende.setText("");
+        this.jtext_determina.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-       if(this.combobox_dependencias.getItemCount()>0){
+        if (this.combobox_dependencias.getItemCount() > 0) {
             this.combobox_dependencias.removeItemAt(this.combobox_dependencias.getSelectedIndex());
-       }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        if(this.combobox_dependencias.getItemCount()>0){
-            ArrayList determina = new ArrayList();
-            ArrayList depende = new ArrayList();
-            String clave1="";
-            String clave2="";
-            String clave3="";
-            String cola1="";
-            String cola2="";
-            String cola3="";
-            for(int i=0;i<this.combobox_dependencias.getItemCount();i++){
-                String[] dividir = this.combobox_dependencias.getItemAt(i).toString().split("->");
-                determina.add(dividir[0]);
-                depende.add(dividir[1]);
-            }
-            clave1=determina.get(0).toString();
-            cola1=depende.get(0).toString();
-           for(int i=1;i<this.combobox_dependencias.getItemCount();i++){
-               int contar=0;
-                  for(int j=0;j<clave1.length();j++){
-                       for(int k=0;k<depende.get(i).toString().length();k++){
-                           if(depende.get(i).toString().charAt(k)==clave1.charAt(j)){
-                               contar++;
-                               for(int l=0;l<clave1.length();l++){
-                                   if(!(l==j)){
-                                      clave2+=clave1.charAt(l); 
-                                   }
-                               }
-                               clave2+=determina.get(i);
-                           }
-                       }
-                   }
-                  if(contar==0){
-                      clave2=clave1+determina.get(i);
-                  }
-                  
-                  cola2=cola1+depende.get(i);
-                  contar=0;
-                   for(int j=0;j<cola1.length();j++){
-                       for(int k=0;k<determina.get(i).toString().length();k++){
-                           if(determina.get(i).toString().charAt(k)==cola1.charAt(j)){
-                               contar++;
-                               boolean contiene = true;
-                                for(int l=0;l<clave1.length();l++){
-                                   if(!(clave2.contains(Character.toString(clave1.charAt(l))))){
-                                       contiene=false;
-                                       l=clave1.length();
-                                   }
-                                }
-                               if(contiene){
-                                    for(int l=0;l<clave2.length();l++){
-                                        if(!(clave2.charAt(l)==cola1.charAt(j))){
-                                           clave3+=clave2.charAt(l); 
-                                        }
-                                    }
-                                   cola3=cola2;
-                               }else{
-                                   clave3=clave2;
-                                   for(int l=0;l<cola2.length();l++){
-                                        if(!(cola2.charAt(l)==cola1.charAt(j))){
-                                           cola3+=cola2.charAt(l); 
-                                        } 
-                                    }
-                               }
-                           }
-                           
-                       }
-                   }
-                   if(contar==0){
-                      clave3=clave2;
-                      cola3=cola2;
-                   }
-                  
-                   clave2="";
-                   clave1=clave3;
-                   cola1=cola3;
-                   clave3="";
-                   cola3="";
-           }
-           String temporal = Character.toString(clave1.charAt(0));
-                  for(int p=1;p<clave1.length();p++){
-                     if(!(temporal.contains(Character.toString(clave1.charAt(p))))) {
-                         temporal+=clave1.charAt(p);
-                     }
-                  }
-          String letras = clave1+cola1;
-                 for(int p=1;p<this.combobox_atributos.getItemCount();p++){
-                     if(!(letras.contains(Character.toString(this.combobox_atributos.getItemAt(p).toString().charAt(0))))) {
-                         temporal+=this.combobox_atributos.getItemAt(p).toString();
-                     }
-                  }
-           this.combobox_clavescandidatas.addItem(temporal);
+        ///////////////////////////////////////////////////////////////////////Limpiando campos
+        while (this.combobox_clavescandidatas.getItemCount() > 0) {
+            this.combobox_clavescandidatas.removeItemAt(0);
+        }
+        ArrayList dependencias = new ArrayList();
+        ArrayList atributos = new ArrayList();
+        for (int i = 0; i < this.combobox_atributos.getItemCount(); i++) {
+            atributos.add(this.combobox_atributos.getItemAt(i).toString());
+        }
+        for (int i = 0; i < this.combobox_dependencias.getItemCount(); i++) {
+            dependencias.add(this.combobox_dependencias.getItemAt(i).toString());
+        }
+
+        ArrayList clavescandidatas = MetodoClaves(dependencias, atributos);
+        System.out.println(clavescandidatas);
+        for (int i = 0; i < clavescandidatas.size(); i++) {
+            this.combobox_clavescandidatas.addItem(clavescandidatas.get(i));
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -814,99 +757,107 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dialog_normalizar.setModal(true);
         this.dialog_normalizar.setVisible(true);
+        dep.clear();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void button_insertarrelacion_norActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_insertarrelacion_norActionPerformed
-         this.label1.setText("...");
+        this.label1.setText("...");
         String relacion = this.jtext_relacion_nor.getText().toUpperCase();
         String[] atributos = relacion.split(",");
-        boolean correcto=true;
-        for(int i=0; i<atributos.length;i++){
-            if(!(atributos[i].length()==1 && Character.isLetter(atributos[i].charAt(0)))){
+        boolean correcto = true;
+        for (int i = 0; i < atributos.length; i++) {
+            if (!(atributos[i].length() == 1 && Character.isLetter(atributos[i].charAt(0)))) {
                 this.label1.setText("Solamente utilize una letra para cada atributo");
-                correcto=false;
+                correcto = false;
                 break;
             }//fin del if
         }//fin del for
-        for(int i=0; i<atributos.length;i++){
-           for(int j=i+1; j<atributos.length;j++){
-               if(atributos[i].equals(atributos[j])){
-                   this.label1.setText("No se pueden repetir letras para los atributos");
-                   correcto=false;
-                   break;
-               }//fin del if
-           }//fin del for
+        for (int i = 0; i < atributos.length; i++) {
+            for (int j = i + 1; j < atributos.length; j++) {
+                if (atributos[i].equals(atributos[j])) {
+                    this.label1.setText("No se pueden repetir letras para los atributos");
+                    correcto = false;
+                    break;
+                }//fin del if
+            }//fin del for
         }//fin del for
-        
-        if(correcto){
-            for(int i=0; i<atributos.length;i++){
+
+        if (correcto) {
+            for (int i = 0; i < atributos.length; i++) {
                 this.combobox_atributos_nor.addItem(atributos[i]);
             }
         }
-        
+        this.jtext_relacion_nor.setText("");
     }//GEN-LAST:event_button_insertarrelacion_norActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-              if((!(this.combobox_atributos_nor.getItemCount()==0)) ){
+        if ((!(this.combobox_atributos_nor.getItemCount() == 0))) {
             this.label_errores_nor.setText("...");
             String determina = this.jtext_determina_nor.getText().toUpperCase();
             String depende = this.jtext_depende_nor.getText().toUpperCase();
             boolean correcto = true;
-            for(int i=0; i<determina.length();i++){
-                if(!(Character.isLetter(determina.charAt(i)))){
+            for (int i = 0; i < determina.length(); i++) {
+                if (!(Character.isLetter(determina.charAt(i)))) {
                     this.label_errores_nor.setText("Ingrese atributos válidos");
                     correcto = false;
                     break;
                 }
             }
-            for(int i=0; i<depende.length();i++){
-                if(!(Character.isLetter(depende.charAt(i)))){
+            for (int i = 0; i < depende.length(); i++) {
+                if (!(Character.isLetter(depende.charAt(i)))) {
                     this.label_errores_nor.setText("Ingrese atributos válidos");
                     correcto = false;
                     break;
                 }
             }
-            int contar=0;
-            for(int i=0; i<determina.length();i++){
-                contar=0;
-              for(int j=0; j<this.combobox_atributos_nor.getItemCount();j++){  
-                  if(determina.charAt(i)==(this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))){
-                      contar++;
-                      j=this.combobox_atributos_nor.getItemCount();
+            int contar = 0;
+            for (int i = 0; i < determina.length(); i++) {
+                contar = 0;
+                for (int j = 0; j < this.combobox_atributos_nor.getItemCount(); j++) {
+                    if (determina.charAt(i) == (this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))) {
+                        contar++;
+                        j = this.combobox_atributos_nor.getItemCount();
 
-                  }
-               }
-              if(contar==0){
-                  correcto=false;
-                  this.label_errores_nor.setText("Ingrese atributos válidos");
-                  break;
-              }
+                    }
+                }
+
+                if (contar == 0) {
+                    correcto = false;
+                    this.label_errores_nor.setText("Ingrese atributos válidos");
+                    break;
+                }
             }
-            for(int i=0; i<depende.length();i++){
-                contar=0;
-              for(int j=0; j<this.combobox_atributos_nor.getItemCount();j++){  
-                  if(depende.charAt(i)==(this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))){
-                      contar++;
-                      j=this.combobox_atributos_nor.getItemCount();
-                  }
-              }
-              if(contar==0){
-                  correcto=false;
-                  this.label_errores_nor.setText("Ingrese atributos válidos");
-                  break;
-              }
+            for (int i = 0; i < depende.length(); i++) {
+                contar = 0;
+                for (int j = 0; j < this.combobox_atributos_nor.getItemCount(); j++) {
+                    if (depende.charAt(i) == (this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))) {
+                        contar++;
+                        j = this.combobox_atributos_nor.getItemCount();
+                    }
+                }
+                if (contar == 0) {
+                    correcto = false;
+                    this.label_errores_nor.setText("Ingrese atributos válidos");
+                    break;
+                }
             }
-            if(correcto){
-                this.combobox_dependencias_nor.addItem(determina+"->"+depende);
-                
-                dep.add(new dependencias(determina,depende));
+            if (correcto) {
+                this.combobox_dependencias_nor.addItem(determina + "->" + depende);
+
+                deter.add(determina);
+                depen.add(depende);
             }//fin del if
-       
+
         }
+        this.jtext_depende_nor.setText("");
+        this.jtext_determina_nor.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        if (this.combobox_dependencias_nor.getItemCount() > 0) {
+            this.combobox_dependencias_nor.removeItemAt(this.combobox_dependencias_nor.getSelectedIndex());
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void combobox_atributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_atributosActionPerformed
@@ -914,192 +865,577 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_combobox_atributosActionPerformed
 
     private void combobox_atributos_norActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_atributos_norActionPerformed
-       Object o=this.combobox_atributos_nor.getItemAt(this.combobox_atributos_nor.getSelectedIndex());
-       jtext_claveprimaria.setText(o.toString());
     }//GEN-LAST:event_combobox_atributos_norActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        try{
-        if(!"".equals(jtext_multi.getText())){
-        String rel=jtext_relacion_nor.getText();
-        String[] split = rel.split(",");
-        ArrayList<String>s=new ArrayList<String>();
-         for(int i=0;i<split.length;i++){
-           s.add(split[i]);
-            
-        }//fin del for
-        String multi=jtext_multi.getText();
-       String[] split2=multi.split(",");
-       ArrayList<String>s2=new ArrayList<String>();
-       for(int i=0;i<s.size();i++){
-           for(int i2=0;i2<split2.length;i2++){
-               if(s.get(i) == null ? split2[i2] == null : s.get(i).equals(split2[i2])){
-                   s.remove(i);
-               }//fin del if
-           }//fin del for
-       }//fin del for
-       for(int i=0;i<s.size();i++){
-           if(i==0){
-           textarea_nf1.setText("R("+s.get(i));
-           }//fin del if
-           else{
-               textarea_nf1.setText(textarea_nf1.getText()+","+s.get(i));
-           }//fin del else
-           
-       }//fin del for
-       textarea_nf1.setText(textarea_nf1.getText()+")");
-       textarea_nf1.setText(textarea_nf1.getText()+"\n"+"R("+s.get(0));
-       for(int i=0;i<split2.length;i++){
-       textarea_nf1.setText(textarea_nf1.getText()+","+split2[i]);    
-       }//fin del for
-       textarea_nf1.setText(textarea_nf1.getText()+")");
-        }//fin del if
-        else{
-            textarea_nf1.setText("R("+jtext_relacion_nor.getText()+")");
-        }//fin del else
-        ArrayList<String>relation=new ArrayList();
-        if(!"".equals(jtext_multi.getText())){
-           String[] split= textarea_nf1.getText().split("\n");
-           for(int i=0;i<split.length;i++){
-               relation.add(split[i]);
-           }//fin del for
-        }//fin del if
-        else{
-            relation.add(textarea_nf1.getText());
-        }//fin del else
-        String clave=jtext_claveprimaria.getText();
-        ArrayList<String>claves=new ArrayList<String>();
-        claves.add(clave);
-        ArrayList<String>NewRel=new ArrayList<String>();
-      
-        boolean contiene=false;
-        ArrayList<dependencias>tr=new ArrayList<dependencias>();
-    this.TransitivosParaPrimaria(clave, dep);
-        
-          for(int i=0;i<dep.size();i++){
-            System.out.print(dep.get(i).getDeterminante()+"->");
-            System.out.println(dep.get(i).getDependiente());
-        }//fin del for
-            System.out.println("");
-            System.out.println("");
-            for(int i=0;i<dep.size();i++){
-               
-                    if(dep.get(i).getDeterminante().equals(clave)){
-                        contiene=true;
-                    }//fin del if
-              
-                if(contiene==false){
-                   
-                   
-            if(claves.contains(dep.get(i).getDeterminante())){
-                int index=claves.indexOf(dep.get(i).getDeterminante());
-                        String concat = NewRel.get(index).concat(","+dep.get(i).getDeterminante());
-                        NewRel.set(index, concat);
-               
-            }//fin del if
-            else{
-                NewRel.add(dep.get(i).getDeterminante()+","+dep.get(i).getDependiente());
-            }//fin del else
-           for(int i2=0;i2<NewRel.size();i2++){
-                        String[] split2 = NewRel.get(i2).split(",");
-                        claves.add(split2[0]);
-                        
-                    }//fin del for
-                }//fin del if grande
-                contiene=false;
-            }//fin del for de dep
-             for(int i=0;i<claves.size();i++){
-                System.out.println(claves.get(i));   
+        this.label2.setText("...");
+        String clavep = this.jtext_claveprimaria.getText().toUpperCase();
+        String multi = this.jtext_multi.getText().toUpperCase();
+        ArrayList dependencias = new ArrayList();
+        ArrayList atributos = new ArrayList();
+
+        if (clavep.equals("")) {
+            this.label2.setText("No ha ingresado la clave primaria");
+        } else {
+            if (this.combobox_dependencias_nor.getItemCount() > 0) {
+                if (verificar()) {//////////////////verificar si la clave y multivaluado tienen tributos de la lista
+                    //////////////////////////////////////////////// verificar si la clave primaria esta correcta
+                    for (int i = 0; i < this.combobox_atributos_nor.getItemCount(); i++) {
+                        atributos.add(this.combobox_atributos_nor.getItemAt(i).toString());
+                    }
+                    for (int i = 0; i < this.combobox_dependencias_nor.getItemCount(); i++) {
+                        dependencias.add(this.combobox_dependencias_nor.getItemAt(i).toString());
+                    }
+
+                    ArrayList clavescandidatas = MetodoClaves(dependencias, atributos);
+                    boolean encontroclave = verificarClave(clavescandidatas);
+                    if (!encontroclave) {
+                        this.label2.setText("La clave ingresada es incorrecta para las dependencias");
+                    } else {////////////////////////////////////La clave esta correcta
+                        ArrayList lineas = new ArrayList();
+                        if (!(multi.equals(""))) {
+                            ArrayList atrimul = new ArrayList();
+                            ArrayList quitaratributos = atributos;
+                            String lin = "";
+                            for (int l = 0; l < multi.length(); l++) {
+                                lin = "";
+                                lin += clavep + multi.charAt(l);
+                                lineas.add(lin);
+                                quitaratributos.remove(Character.toString(multi.charAt(l)));
+                            }
+                            lin = "";
+                            for (int b = 0; b < quitaratributos.size(); b++) {
+                                lin += quitaratributos.get(b).toString();
+                            }
+                            lineas.add(0, lin);
+                            imprimirnf1(lineas, clavep);
+                        } else {
+                            String lin = "";
+                            for (int b = 0; b < this.combobox_atributos_nor.getItemCount(); b++) {
+                                lin += this.combobox_atributos_nor.getItemAt(b).toString();
+                            }
+                            lineas.add(lin);
+                            imprimirnf1(lineas, clavep);
+                        }
+                    }
+                    /////////////////////////////////////////////////////////////////////////termina de verificar clave primaria
+                }
             }
-             ArrayList<String>smo=new ArrayList<String>();
-            for(int i=0;i<NewRel.size();i++){
-            String[] split = NewRel.get(i).split(",");
-                for(int i2=0;i2<split.length;i2++){
-                    smo.add(split[i2]);
-                }//fin del segundo for
-            }//fin del for
-        
-       
-         
-        for(int i=0;i<relation.size();i++){
-            for(int i2=0;i2<smo.size();i2++){
-                String x=relation.get(i).replace(","+smo.get(i2),"");
-                relation.set(i, x);
-            }//fin del segundo for
-        }//fin del for        
-        
-         for(int i=0;i<NewRel.size();i++){
-            relation.add("R("+NewRel.get(i)+")");
-        }//fin del for
-        
-        
-        for(int i=0;i<relation.size();i++){
-        textarea_nf2.setText(textarea_nf2.getText()+relation.get(i)+"\n");
-        }//fin del for
         }
-        catch(Exception e){
-            System.out.println("");
-            System.out.println("");
-            System.out.println("Exception starting");
-            e.printStackTrace();
-        }
+        //begin
+        SNF();
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    public void TransitivosParaPrimaria(String key,ArrayList<dependencias>list){
-        ArrayList<String> ret;
-        ret=new ArrayList<String>();
-        ArrayList<String>list1;
-        list1=new ArrayList<String>();
-        ArrayList<String>list2;
-        list2=new ArrayList<String>();
-        ArrayList<dependencias>ret1=new ArrayList<dependencias>();
-        String tmp=key;
-        System.out.println("Entro al metodo");
-        for(int i=0;i<list.size();i++){
-            list1.add(list.get(i).getDeterminante());
-            list2.add(list.get(i).getDependiente());
+    public boolean chequar(String key, String det) {
+        boolean ret = true;
+        for (int i = 0; i < det.length(); i++) {
+            if (key.contains(det.charAt(i) + "") == false) {
+                ret = false;
+            }//fin del if
         }//fin del for
-        int count=0;
-        int index=0;
-        ArrayList<Integer>pos=new ArrayList<Integer>();
-        for(int i=0;i<list1.size();i++){
-            if(list1.get(i) == null ? key == null : list1.get(i).equals(key)){
-            pos.add(i);
-            }
-        }//fin del for
-        for(int i=0;i<pos.size();i++){
-            tmp=list2.get(pos.get(i));
-            System.out.println(tmp);
-       while(list1.contains(tmp)){
-           System.out.println("Its at the while");
-          tmp= list2.get(list1.indexOf(tmp));
-           System.out.println(tmp);
-          
-               ret.add(tmp);
-              
-               
-       
-           count+=1;
-       }//fin del while
-        }//fin del for
-        for(int i=0;i<ret.size();i++){
-            dep.add(new dependencias(key,ret.get(i)));
-        }//fin del for
+        return ret;
     }
-    
-    
+
+    public ArrayList<Integer> IndexFinder(ArrayList<dependencia> x, dependencia y) {
+        ArrayList<Integer> ret = new ArrayList<Integer>();
+        for (int i = 0; i < x.size(); i++) {
+            if (x.get(i).getDeterminante() == null ? y.getDeterminante() == null : x.get(i).getDeterminante().equals(y.getDeterminante())) {
+                ret.add(i);
+            }//fin del if
+        }//fin del for
+        return ret;
+    }
+
+    public String KeyFinder(String relacion) {
+        String ret = "";
+        for (int i = 0; i < relacion.length(); i++) {
+            int x = relacion.charAt(i);
+            if (x >= 40 || x <= 90) {
+                ret += relacion.charAt(i) + "";
+            }//fin del if
+        }
+
+        return ret;
+    }//fin del metodo
+
+    public void SNF() {
+        String[] split = this.textarea_nf1.getText().split("\n");
+        for (int i = 0; i < split.length; i++) {
+            System.out.println(split[i]);
+        }
+        String clave = "";
+        ArrayList<String> deterCo = new ArrayList();
+        ArrayList<String> depenCo = new ArrayList();
+        ArrayList<String> print = new ArrayList();
+
+        for (int i = 0; i < deter.size(); i++) {
+            System.out.println(deter.get(i));
+        }
+
+        for (int i = 0; i < split.length; i++) {
+            
+
+            for (int i2 = 0; i2 < depen.size(); i2++) {
+                depenCo.add(depen.get(i2).toLowerCase());
+            }
+            for (int i2 = 0; i2 < deter.size(); i2++) {
+                deterCo.add(deter.get(i2).toLowerCase());
+            }
+               System.out.println("");
+            clave = "";
+            for (int i2 = 0; i2 < split[i].length(); i2++) {
+                int g = split[i].charAt(i2);
+                if (g >= 65 && g <= 90) {
+                    clave += split[i].charAt(i2) + "";
+                }//fin del if
+            }//fin del for
+
+            split[i] = split[i].toLowerCase();
+            clave = clave.toLowerCase();
+            for (int i2 = 0; i2 < deterCo.size(); i2++) {
+                int bandera = 0;
+
+                for (int i3 = 0; i3 < deterCo.get(i2).length(); i3++) {
+                    if (split[i].contains(deterCo.get(i2).charAt(i3) + "")) {
+
+                        bandera++;
+                        System.out.println(deterCo.get(i2) + " " + bandera);
+                    }//fin del if
+                }//fin del for
+
+                if (bandera == deterCo.get(i2).length()) {
+                    bandera = 0;
+                    for (int i3 = 0; i3 < depenCo.get(i2).length(); i3++) {
+                        if (split[i].contains(depenCo.get(i2).charAt(i3) + "")) {
+
+                            bandera++;
+                        }//fin del if
+                    }//fin del for
+
+                    if (bandera != depenCo.get(i2).length()) {
+                        deterCo.remove(i2);
+                        depenCo.remove(i2);
+
+                        i2--;
+
+                    }//fin del if   
+
+
+
+                }//fin del if
+                else {
+                    System.out.println("entro2");
+                    deterCo.remove(i2);
+                    depenCo.remove(i2);
+                    i2--;
+                }
+            }//fin del for
+            System.out.println("");
+            System.out.println("imprimir deterCo");
+            System.out.println(deterCo);
+            System.out.println(depenCo);
+            for (int i2 = 0; i2 < deterCo.size(); i2++) {
+            }
+
+            ArrayList<String> relations = new ArrayList();
+            ArrayList<String> contiene;
+            for (int i2 = 0; i2 < deterCo.size(); i2++) {
+                int flag = 0;
+                contiene = new ArrayList<String>();
+                for (int i3 = 0; i3 < clave.length(); i3++) {
+                    if (deterCo.get(i2).contains(clave.charAt(i3) + "")) {
+                        flag++;
+                        contiene.add((clave.charAt(i3) + "").toUpperCase());
+                        System.out.println("clave " + (clave.charAt(i3) + "").toUpperCase());
+                        System.out.println("deter" + deterCo.get(i));
+                    }//fin del if
+                }//fin del for
+                if (flag != 0 && flag != clave.length()) {
+                    String imp = contiene.get(0);
+                    for (int i3 = 1; i3 < contiene.size(); i3++) {
+                        imp += "," + contiene.get(i3);
+                    }//fin del for
+
+                    for (int i6 = 0; i6 < depenCo.get(i2).length(); i6++) {
+
+                        if (clave.contains(depenCo.get(i2).charAt(i6) + "") == false) {
+
+                            split[i] = split[i].replace(depenCo.get(i2).charAt(i6) + "", "");
+                            imp += "," + depenCo.get(i2).charAt(i6);
+                        }
+
+                    }
+                    relations.add("(" + imp + ")");
+                }//fin del if
+            }//fin del for
+            for (int i2 = 0; i2 < split[i].length(); i2++) {
+                if (clave.contains(split[i].charAt(i2) + "")) {
+                    int y = split[i].charAt(i2);
+                    char r = Character.toUpperCase(split[i].charAt(i2));
+                    split[i] = split[i].replace(split[i].charAt(i2), r);
+                }
+            }
+            print.add(split[i]);
+            for (int i2 = 0; i2 < relations.size(); i2++) {
+                print.add(relations.get(i2));
+            }//fin del for
+            depenCo.clear();
+            deterCo.clear();
+        }//fin del for principal
+        for (int i = 0; i < print.size(); i++) {
+            this.textarea_nf2.setText(this.textarea_nf2.getText() + print.get(i)+"\n");
+            System.out.println(print.get(i));
+        }//fin del for
+
+
+
+    }//fin del metodo
+
+    public ArrayList<String> Extractor(ArrayList<dependencia> d) {
+        ArrayList<String> ret = new ArrayList<String>();
+
+        String tmp = "";
+        for (int i = 0; i < d.size(); i++) {
+            tmp = d.get(i).getDeterminante();
+            if (ret.isEmpty()) {
+                ret.add(tmp.charAt(0) + "");
+            } else {
+                for (int i2 = 0; i2 < tmp.length(); i2++) {
+                    if (ret.contains(tmp.charAt(i2) + "") == false) {
+                        ret.add(tmp.charAt(i2) + "");
+                    }//fin del if
+                }//fin del for
+            }//fin del else
+        }//fin del for
+
+        for (int i = 0; i < d.size(); i++) {
+            tmp = d.get(i).getDependiente();
+            if (ret.isEmpty()) {
+            } else {
+                for (int i2 = 0; i2 < tmp.length(); i2++) {
+                    if (ret.contains(tmp.charAt(i2) + "") == false) {
+                        ret.add(tmp.charAt(i2) + "");
+                    }//fin del if
+                }//fin del for
+            }//fin del else
+        }//fin del for
+
+        return ret;
+    }//fin del metodo
+
     private void cleanerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanerActionPerformed
         this.textarea_nf1.setText("");
         this.textarea_nf2.setText("");
         this.textarea_nf3.setText("");
-        this.combobox_atributos_nor.removeAll();
-        this.combobox_dependencias_nor.removeAll();
-        
-        this.jtext_claveprimaria.setText(null);
-        this.jtext_depende_nor.setText(null);
-        this.jtext_determina_nor.setText(null);
-        this.jtext_relacion_nor.setText(null);
+        while (this.combobox_atributos_nor.getItemCount() > 0) {
+            this.combobox_atributos_nor.removeItemAt(0);
+        }
+        while (this.combobox_dependencias_nor.getItemCount() > 0) {
+            this.combobox_dependencias_nor.removeItemAt(0);
+        }
+        this.jtext_claveprimaria.setText("");
+        this.jtext_depende_nor.setText("");
+        this.jtext_determina_nor.setText("");
+        this.jtext_relacion_nor.setText("");
+        this.jtext_multi.setText("");
+        deter.clear();
+        depen.clear();
     }//GEN-LAST:event_cleanerActionPerformed
+
+    private void jtext_claveprimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtext_claveprimariaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtext_claveprimariaActionPerformed
+    /*
+     IMPRIMIR NORMA NF1
+     -------------------------------------------------
+     ------------------------------------------------- 
+     -------------------------------------------------
+     */
+
+    public void imprimirnf1(ArrayList lineas, String clavep) {
+        String texto1 = "";
+        for (int i = 0; i < lineas.size(); i++) {
+            String texto = "(";
+            for (int h = 0; h < lineas.get(i).toString().length(); h++) {
+                if (!(clavep.contains(Character.toString(lineas.get(i).toString().charAt(h))))) {
+                    texto += Character.toString(lineas.get(i).toString().charAt(h)).toLowerCase() + ",";
+                } else {
+                    texto += Character.toString(lineas.get(i).toString().charAt(h)) + ",";
+                }
+            }
+            texto1 += texto.substring(0, texto.length() - 1) + ")\n";
+
+        }
+        this.textarea_nf1.setText(texto1);
+    }
+
+    /*
+     METODO PARA VERIFICAR SI LA CLAVE ES CORRECTA
+     -------------------------------------------------
+     ------------------------------------------------- 
+     -------------------------------------------------
+     */
+    public boolean verificarClave(ArrayList claves) {
+        for (int i = 0; i < claves.size(); i++) {
+            boolean comparar = true;
+            if (claves.get(i).toString().length() == this.jtext_claveprimaria.getText().length()) {
+                for (int j = 0; j < claves.get(i).toString().length(); j++) {
+                    if (!(this.jtext_claveprimaria.getText().toUpperCase().contains(Character.toString(claves.get(i).toString().charAt(j))))) {
+                        comparar = false;
+                        j = claves.get(i).toString().length();
+                    }
+                }
+                if (comparar) {
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+    /*
+     METODO PARA VERIFICAR CAMPOS CLAVE Y MULTIVALUADO
+     -------------------------------------------------
+     ------------------------------------------------- 
+     -------------------------------------------------
+     */
+
+    public boolean verificar() {
+        boolean correcto = true;
+        int contar = 0;
+        for (int i = 0; i < this.jtext_claveprimaria.getText().length(); i++) {
+            contar = 0;
+            for (int j = 0; j < this.combobox_atributos_nor.getItemCount(); j++) {
+                if (this.jtext_claveprimaria.getText().toUpperCase().charAt(i) == (this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))) {
+                    contar++;
+                }
+            }
+            if (contar == 0) {
+                correcto = false;
+                break;
+            }
+        }
+        for (int i = 0; i < this.jtext_multi.getText().length(); i++) {
+            contar = 0;
+            for (int j = 0; j < this.combobox_atributos_nor.getItemCount(); j++) {
+                if (this.jtext_multi.getText().toUpperCase().charAt(i) == (this.combobox_atributos_nor.getItemAt(j).toString().charAt(0))) {
+                    contar++;
+                }
+            }
+            if (contar == 0) {
+                correcto = false;
+                break;
+            }
+        }
+        if (correcto) {
+            return true;
+        } else {
+            this.label2.setText("Campo Clave o Multivaluado no contiene atributosa válidos");
+            return false;
+        }
+    }////////////////////////////////////////Fin metodo verificar
+
+    /*
+     METODO PARA CLAVES CANDIDATAS
+     -----------------------------
+     -----------------------------   
+     -----------------------------
+     */
+    public ArrayList MetodoClaves(ArrayList dependencias, ArrayList atributos) {///////////////////////////////////////
+        ArrayList clavescandidatas = new ArrayList();
+        if (dependencias.size() > 0) {
+            ArrayList lista = new ArrayList();
+            for (int i = 0; i < dependencias.size(); i++) {
+                lista.add(dependencias.get(i).toString());
+            }
+
+            for (int w = 0; w < dependencias.size(); w++) {
+                //////////////////////////////////////////////////for buscando todas las posibles llaves 
+                ///////if reorganiza la lista con dependencia (mirar las dependencia desde otra perspectiva)
+                if (w > 0) {
+                    Object temp = lista.get(0);
+                    Object temp2 = "";
+                    for (int i = 0; i < lista.size(); i++) {
+                        if (i == 0) {
+                            lista.set(i, lista.get(lista.size() - 1));
+                        } else {
+                            lista.set(i, temp);
+                            temp = temp2;
+
+                        }
+                        if (i < lista.size() - 1) {
+                            temp2 = lista.get(i + 1);
+                        }
+                    }
+                }
+
+                ArrayList guardarcolas1 = new ArrayList();
+                //////////////////////////////////////inicializando variables
+                String clave1 = "";
+                String clave2 = "";
+                String clave3 = "";
+                String cola1 = "";
+                String cola2 = "";
+                String cola3 = "";
+                ArrayList determina = new ArrayList();
+                ArrayList depende = new ArrayList();
+                /////////////////////////////////////////////////////////dividiendo dependientes con los que determinan
+                for (int i = 0; i < lista.size(); i++) {
+                    String[] dividir = lista.get(i).toString().split("->");
+                    determina.add(dividir[0]);
+                    depende.add(dividir[1]);
+                }
+                clave1 = determina.get(0).toString();
+                cola1 = depende.get(0).toString();
+                for (int i = 1; i < lista.size(); i++) {
+                    guardarcolas1.add(cola1);
+                    ////////////////////////////////////////Comparar transitividad, depende con clave temporal
+                    int contar = 0;
+                    String contieneletras = "";
+                    for (int j = 0; j < clave1.length(); j++) {
+                        if (depende.get(i).toString().contains(Character.toString(clave1.charAt(j)))) {
+                            contieneletras += clave1.charAt(j);
+                            contar++;
+                        }
+                    }
+                    if (contar > 0 && depende.get(i).toString().contains(contieneletras)) {
+                        for (int j = 0; j < clave1.length(); j++) {
+                            if (!(contieneletras.contains(Character.toString(clave1.charAt(j))))) {
+                                clave2 += clave1.charAt(j);
+                            }
+                        }
+                        clave2 += determina.get(i);
+                    }
+                    if (contar == 0 || !(depende.get(i).toString().contains(contieneletras))) {
+                        clave2 = clave1 + determina.get(i);
+                    }
+                    cola2 = cola1 + depende.get(i);
+                    ///////////////////////////////////////comparar transitividad determina con dependiente temporal
+                    int contarletras = 0;
+                    String letras = "";
+                    for (int j = 0; j < cola1.length(); j++) {
+                        if (determina.get(i).toString().contains(Character.toString(cola1.charAt(j)))) {
+                            contarletras++;
+                            letras += cola1.charAt(j);
+                        }
+                    }
+
+                    if (contarletras > 1 && cola1.contains(letras)) {
+                        boolean contiene = false;
+                        int sizecolas1 = guardarcolas1.size();
+                        if (sizecolas1 > 1) {
+                            for (int j = 0; j < guardarcolas1.size() - 1; j++) {
+                                if (guardarcolas1.get(j).toString().contains(letras)) {
+                                    contiene = true;
+                                    break;
+                                }
+                            }
+                        } else {
+                            contiene = true;
+                        }
+                        if (contiene) {
+                            for (int l = 0; l < clave1.length(); l++) {
+                                if (!(clave2.contains(Character.toString(clave1.charAt(l))))) {
+                                    contiene = false;
+                                    l = clave1.length();
+                                }
+                            }
+                        }
+                        if (contiene) {
+                            String[] partes = clave2.split(letras);
+                            for (int c = 0; c < partes.length; c++) {
+                                clave3 += partes[c];
+                            }
+                        } else {
+                            contarletras = 0;
+                        }
+                        cola3 = cola2;
+                    }
+                    if (contarletras == 1) {
+                        for (int j = 0; j < cola1.length(); j++) {
+                            for (int k = 0; k < determina.get(i).toString().length(); k++) {
+                                if (determina.get(i).toString().charAt(k) == cola1.charAt(j)) {
+                                    boolean contiene = true;
+                                    for (int l = 0; l < clave1.length(); l++) {
+                                        if (!(clave2.contains(Character.toString(clave1.charAt(l))))) {
+                                            contiene = false;
+                                            l = clave1.length();
+                                        }
+                                    }
+                                    if (contiene) {
+                                        for (int l = 0; l < clave2.length(); l++) {
+                                            if (!(clave2.charAt(l) == cola1.charAt(j))) {
+                                                clave3 += clave2.charAt(l);
+                                            }
+                                        }
+                                        cola3 = cola2;
+                                    } else {
+                                        clave3 = clave2;
+                                        for (int l = 0; l < cola2.length(); l++) {
+                                            if (!(cola2.charAt(l) == cola1.charAt(j))) {
+                                                cola3 += cola2.charAt(l);
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    if (contarletras == 0) {
+                        clave3 = clave2;
+                        cola3 = cola2;
+                    }
+                    /////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\inicializar variables, establecer clave
+                    clave2 = "";
+                    clave1 = clave3;
+                    cola1 = cola3;
+                    clave3 = "";
+                    cola3 = "";
+                }
+                String temporal = "";
+                if (clave1.length() > 0) {
+                    temporal = Character.toString(clave1.charAt(0));
+                }
+                for (int p = 1; p < clave1.length(); p++) {
+                    if (!(temporal.contains(Character.toString(clave1.charAt(p))))) {
+                        temporal += clave1.charAt(p);
+                    }
+                }
+                ////////////////////////////////////Si algun atributo no esta en la dependencia lo agrega a la clave
+                String letras = clave1 + cola1;
+                for (int p = 1; p < atributos.size(); p++) {
+                    if (!(letras.contains(Character.toString(atributos.get(p).toString().charAt(0))))) {
+                        temporal += atributos.get(p).toString();
+                    }
+                }
+                ///////////////////////////////////verificar si hay claves candidatas repetidas
+                boolean repetida = false;
+                for (int h = 0; h < clavescandidatas.size(); h++) {
+                    int contiene = 0;
+                    for (int x = 0; x < temporal.length(); x++) {
+                        if (clavescandidatas.get(h).toString().contains(Character.toString(temporal.charAt(x)))) {
+                            contiene++;
+                        }
+                    }
+
+                    if (contiene == temporal.length()) {
+                        repetida = true;
+                        break;
+                    }
+                }
+                ///////////////////////////////////////////////////agrega la clave candidata
+                if (repetida == false) {
+                    clavescandidatas.add(temporal);
+                }
+
+
+            }
+        }
+        return clavescandidatas;
+
+    }///////////////////////////////Fin Metodo claves candidatas
 
     /**
      * @param args the command line arguments
@@ -1135,7 +1471,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_clavescandidatas;
     private javax.swing.JButton button_insertarrelacion;
@@ -1195,6 +1530,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jtext_relacion_nor;
     private javax.swing.JLabel label;
     private javax.swing.JLabel label1;
+    private javax.swing.JLabel label2;
     private javax.swing.JLabel label_errores;
     private javax.swing.JLabel label_errores_nor;
     private javax.swing.JTextArea textarea_nf1;
